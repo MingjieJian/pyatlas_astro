@@ -1,0 +1,19 @@
+FC     = gfortran
+FFLAGS = -fno-automatic -std=legacy -w -O3
+
+.PHONY: all src supp clean
+all: src
+
+src: 
+	$(MAKE) -C src/atlas9 FC=$(FC) FFLAGS="$(FFLAGS)"
+	$(MAKE) -C src/atlas12 FC=$(FC) FFLAGS="$(FFLAGS)"
+	$(MAKE) -C assets/atlas12
+	$(MAKE) -C assets/common
+
+supp:
+
+clean:
+	$(MAKE) -C src/atlas9 clean
+	$(MAKE) -C src/atlas12 clean 
+	$(MAKE) -C assets/atlas12 clean
+	$(MAKE) -C assets/common clean

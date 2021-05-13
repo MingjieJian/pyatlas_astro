@@ -1,0 +1,10 @@
+all: diatomicspck.bin
+
+diatomicspck.bin: diatomics.asc
+	ln -s $< fort.11
+	./../../dist/$(shell basename $(CURDIR))/diatomicspack.exe>diatomicspck.out
+	mv fort.12 diatomicspck.bin
+	rm fort.*
+
+clean: 
+	rm *.bin *.out

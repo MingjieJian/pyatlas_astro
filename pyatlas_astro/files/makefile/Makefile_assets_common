@@ -1,0 +1,10 @@
+all: nltelines.bin
+
+nltelines.bin: nltelines.asc
+	ln -s $< fort.11
+	./../../dist/atlas12/nltelinesasctobin.exe>nltelinesasctobin.out
+	mv fort.19 nltelines.bin
+	rm fort.*
+
+clean: 
+	rm nltelines.bin

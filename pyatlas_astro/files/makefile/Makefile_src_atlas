@@ -1,0 +1,7 @@
+all: $(addprefix ../../dist/$(shell basename $(CURDIR))/,$(subst .for,.exe,$(wildcard *.for)))
+
+../../dist/$(shell basename $(CURDIR))/%.exe: %.for
+	gfortran -fno-automatic -std=legacy -w -O3 -o $@ $<
+
+clean: 
+	rm ../../dist/$(shell basename $(CURDIR))/*.exe
